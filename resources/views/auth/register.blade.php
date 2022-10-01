@@ -82,7 +82,10 @@
           <a href="#" title="Facebook" class="btn btn-defaule"><i class="fab fa-facebook-square"></i> Facebook</a>
         </div>
         <div class="col-md-6">
-          <a href="#" title="Google" class="btn btn-defaule"><i class="fab fa-google"></i> Google</a>
+          <form action="{{ route('call_google') }}" method="post">
+            @csrf
+            <button type="submit" title="Google" class="btn btn-defaule"><i class="fab fa-google"></i> Google</button>
+          </form>
         </div>
       </div>
     </div>
