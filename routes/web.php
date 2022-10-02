@@ -15,8 +15,12 @@ Auth::routes();
 Route::get('active/{token}', 'Auth\RegisterController@activation')->name('active_account');
 
 // Google Sign In
-Route::post('/get-google-sign-in-url', [\App\Http\Controllers\Pages\GoogleController::class, 'getGoogleSignInUrl'])->name('call_google');
-Route::get('/google/callback', [\App\Http\Controllers\Pages\GoogleController::class, 'loginCallback']);
+Route::post('/get-google-sign-in-url', [\App\Http\Controllers\Pages\SocialController::class, 'getGoogleSignInUrl'])->name('call_google');
+Route::get('/google/callback', [\App\Http\Controllers\Pages\SocialController::class, 'loginCallback']);
+
+// Facebook Sign In
+Route::post('/get-facebook-sign-in-url', [\App\Http\Controllers\Pages\SocialController::class, 'getFacebookSignInUrl'])->name('call_facebook');
+Route::get('/facebook/callback', [\App\Http\Controllers\Pages\SocialController::class, 'loginFacebookCallback']);
 
 /*
 |--------------------------------------------------------------------------

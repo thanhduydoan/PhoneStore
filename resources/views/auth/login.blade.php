@@ -69,10 +69,27 @@
         <div class="login-social-text">Or login with</div>
         <div class="row">
           <div class="col-md-6">
-            <a href="#" title="Facebook" class="btn btn-defaule"><i class="fab fa-facebook-square"></i> Facebook</a>
+            <form action="{{ route('call_facebook') }}" method="post">
+              @csrf
+              <button onclick="this.blur();" type="submit" title="Facebook" class="btn btn-default"
+                      style="background: #f0f0f0;color: #3b5998;border: 1px solid #3b5998;"
+              >
+                <i class="fab fa-facebook-square"></i>
+                Facebook
+              </button>
+            </form>
+
           </div>
           <div class="col-md-6">
-            <a href="#" title="Google" class="btn btn-defaule"><i class="fab fa-google"></i> Google</a>
+            <form action="{{ route('call_google') }}" method="post">
+              @csrf
+              <button onclick="this.blur();" type="submit" title="Google" class="btn btn-default"
+                      style="background: #f0f0f0;color: #f30;border: 1px solid #f30"
+              >
+                <i class="fab fa-google"></i>
+                Google
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -84,7 +101,12 @@
 
 @section('css')
   <style>
-
+    button:focus {
+      outline: none;
+      box-shadow: none;
+      outline: 0;
+    }
+    *:focus {outline:none !important}
   </style>
 @endsection
 

@@ -79,13 +79,19 @@
       <div class="register-social-text">Or Register With</div>
       <div class="row">
         <div class="col-md-6">
+          {{--<form action="{{ route('call_facebook') }}" method="post">--}}
+            {{--@csrf--}}
+            {{--<button type="submit" title="Facebook" class="btn btn-default"><i class="fab fa-facebook fa-square"></i> Facebook</button>--}}
+          {{--</form>--}}
+
           <a href="#" title="Facebook" class="btn btn-defaule"><i class="fab fa-facebook-square"></i> Facebook</a>
         </div>
         <div class="col-md-6">
-          <form action="{{ route('call_google') }}" method="post">
-            @csrf
-            <button type="submit" title="Google" class="btn btn-defaule"><i class="fab fa-google"></i> Google</button>
-          </form>
+          {{--<form action="{{ route('call_google') }}" method="post">--}}
+            {{--@csrf--}}
+            {{--<button type="submit" title="Google" class="btn btn-default"><i class="fab fa-google"></i> Google</button>--}}
+          {{--</form>--}}
+          <a href="#" title="Google" class="btn btn-defaule"><i class="fab fa-google"></i> Google</a>
         </div>
       </div>
     </div>
