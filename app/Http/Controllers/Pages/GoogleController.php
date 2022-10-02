@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 
@@ -17,21 +18,16 @@ class GoogleController extends Controller
     public function loginCallback()
     {
         try {
-
             $userSocial = Socialite::driver('google')->user();
 
-
+            $userByEmail = User::where('email', $userSocial->email)->whereNull('google_id')->first();
+            if (!empty($userByEmail)) {
+                return redirect()->route('register')->with('message', 'Email đã tồn tại trên hệ thống');
+            }
 
             $user = User::where('google_id', $userSocial->id)->first();
 
-            // validate email exit
-
-            if(!empty($user)){
-                // @todo
-                // Login
-                dd('Login to system');
-            }else{
-                // create new user
+            if (empty($user)) {
                 User::create([
                     'name' => $userSocial->name,
                     'email' => $userSocial->email,
@@ -40,15 +36,18 @@ class GoogleController extends Controller
                     'admin' => 0,
                     'google_id' => $userSocial->id,
                 ]);
-
-                dd('OK');
-
-                // login to system
-                // return redirect()->intended('dashboard');
+                $user = User::latest()->first();
             }
 
+            auth()->login($user);
+            return redirect()->route('home_page')->with(['alert' => [
+                'type' => 'success',
+                'title' => 'Đăng nhập thành công',
+                'content' => 'Chào mừng bạn đến với website PhoneStore của chúng tôi'
+            ]]);
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            Log::error($e);
+            return redirect()->route('register')->with('message', 'Lỗi hệ thống');
         }
     }
 }
