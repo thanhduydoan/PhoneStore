@@ -45,7 +45,7 @@
               <b>Admin PhoneStore</b><br>
               Phone: (+84) 967 999 999<br>
               Email: phonestore@gmail.com<br>
-              Address: Số 1 Đại Cồ Việt, Bách Khoa, Hai Bà Trưng, Hà Nội.
+              Address: Số 18 Phố Viên, Đức Thắng, Bắc Từ Liêm, Hà Nội.
             </address>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-3">

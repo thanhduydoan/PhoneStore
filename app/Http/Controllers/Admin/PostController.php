@@ -49,7 +49,8 @@ class PostController extends Controller
     // conver utf-8 to html entities
     $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
 
-    $dom->loadHtml($content, LIBXML_HTML_NODEFDTD);
+    // $dom->loadHtml($content, LIBXML_HTML_NODEFDTD);
+    @$dom->loadHTML($content);
 
     $images = $dom->getElementsByTagName('img');
 
@@ -180,7 +181,7 @@ class PostController extends Controller
     // conver utf-8 to html entities
     $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
 
-    $dom->loadHtml($content, LIBXML_HTML_NODEFDTD);
+    $dom->loadHtml('...', LIBXML_HTML_NODEFDTD);
 
     $images = $dom->getElementsByTagName('img');
 
